@@ -23,8 +23,6 @@ for files in os.listdir("./mp3"):
 print("================================")
 print("Total files: " + str(len(fileArray)))
 print("================================")
-
-print("================================")
 print("Started")
 print("================================")
 for i in range(0, len(fileArray)):
@@ -36,7 +34,6 @@ for i in range(0, len(fileArray)):
             except:
                 continue
 
-    print("================================")
     print("Done with file " + str(i));
     print("Remaining files: " + str(fileArray - i))
     print("================================")
