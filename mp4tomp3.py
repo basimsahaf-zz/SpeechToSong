@@ -1,18 +1,3 @@
-# MP4 TO MP3 CONVERSION SCRIPT
-# script to convert mp4 video files to mp3 audio
-# useful for turning video ripped from sites such as Youtube or TED
-# into audio files useable with any old mp3 player.
-#
-# usage: python mp4tomp3.py [input directory [output directory]]
-# input directory (optional)  - set directory containing mp4 files to convert (defaults to current folder)
-# output directory (optional) - set directory to export mp3 files to (defaults to input)
-#
-# NOTE: you will need python (2 or 3), mplayer and lame for this script to work
-# sudo apt-get install lame
-# sudo apt-get install mplayer
-# sudo apt-get install python2.7   -- for python 2
-# sudo apt-get install python3.6   -- for python 3
-
 from __future__ import print_function   # for compatibility with both python 2 and 3
 from subprocess import call             # for calling mplayer and lame
 from sys import argv                    # allows user to specify input and output directories
@@ -36,18 +21,18 @@ def main(indir, outdir):
 
         print("[{0}/*.mp4] --> [{1}/*.mp3]".format(indir, outdir))
         files = [] # files for exporting
-            
+
         # get a list of all convertible files in the input directory
         filelist = [ f for f in os.listdir(indir) if f.endswith(".mp4") ]
         for path in filelist:
-            basename = os.path.basename(path) 
+            basename = os.path.basename(path)
             filename = os.path.splitext(basename)[0]
             files.append(filename)
         # remove files that have already been outputted from the list
         files[:] = [f for f in files if not check_file_exists(outdir, f, ".mp3")]
     except OSError as e:
         exit(e)
-    
+
     if len(files) == 0:
         exit("Could not find any files to convert that have not already been converted.")
 
