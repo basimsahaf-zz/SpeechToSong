@@ -99,3 +99,7 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+secret.py
+speeches
+mp3
